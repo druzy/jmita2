@@ -1,5 +1,6 @@
-protocol version 1:
-Découverte et intéraction avec différents protocoles : upnp, airplay, chromecast
-upnp : découverte et intéraction opérationnelles
-airplay : découverte opérationnelle
-chromecast : découverte et intéraction opérationnelles
+jmiat2 version 0.7:
+bug fix : correction du lanceur linux
+création du .desktop
+
+jmita2 version 0.6:
+Version fonctionnelle pour l'upnp et le chromecast de jmita2. Airply doit être mieux implémenté

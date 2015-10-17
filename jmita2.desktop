@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=\s
+Icon=jmita2.png
+Path=/home/druzy
+Exec=/usr/bin/jmita2.sh
+StartupNotify=false
+StartupWMClass=JMita2
+OnlyShowIn=Unity;
+X-UnityGenerated=true

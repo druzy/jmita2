@@ -1,10 +1,12 @@
 package druzy.jmita;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 
@@ -92,8 +94,9 @@ public class JMita2 {
 				if (opt.getFiles()==null || opt.getFiles().size()==0){
 					AskFiles ask=new AskFiles(new VideoFilter());
 					ask.displayViews();
-					opt.setFiles(ask.getModel().getChoosenFiles());
-					//developper le cas ou on appuyer sur cancel
+					List<File> choosen=ask.getModel().getChoosenFiles();
+					if (choosen.size()==0) System.exit(0);
+					else opt.setFiles(ask.getModel().getChoosenFiles());
 				}
 				
 				if (sendTo==null){
