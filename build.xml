@@ -3,7 +3,7 @@
 <property name="src.dir" value="./"/>
 <property name="bin.dir" value="bin"/>
 <property name="jar.dir" value="jar"/>
-<property name="version" value="0.7.3"/>
+<property name="version" value="0.7.4"/>
 <property name="classpath.dir" value="/usr/share/java/"/>
 <property name="name" value="jmita2"/>
 
@@ -31,6 +31,9 @@
 		<manifest>
 			<attribute name="Main-Class" value="druzy.jmita.JMita2"/>
 		</manifest>
+		<fileset dir="${src.dir}">
+			<include name="druzy/jmita/image/**/*.png"/>
+		</fileset>
 	</jar>
 	<echo message="Création du fichier Jar terminée"/>
 </target>

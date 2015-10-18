@@ -80,7 +80,7 @@ public class SendToView extends AbstractView {
 						}
 
 					});
-					mainFrame.setIconImage(new ImageIcon(ClassLoader.getSystemResource(Global.MAIN_ICON)).getImage());
+					//mainFrame.setIconImage(new ImageIcon(ClassLoader.getSystemResource(Global.MAIN_ICON)).getImage());
 					
 					layout=new GridBagLayout();
 					

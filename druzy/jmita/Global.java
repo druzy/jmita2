@@ -5,7 +5,7 @@ import druzy.version.Version;
 
 public class Global {
 	
-	public static final String IMAGE="image";
+	public static final String IMAGE="druzy/jmita/image";
 	public static final String MEDIA_STOP_OUTLINE=IMAGE+"/media_stop_outline.png";
 	public static final String MEDIA_PAUSE_OUTLINE=IMAGE+"/media_pause_outline.png";
 	public static final String MEDIA_PLAY_OUTLINE = IMAGE+"/media_play_outline.png";
@@ -20,7 +20,7 @@ public class Global {
 	public static final File USER_FOLDER=new File(USER_HOME,".jmita2");
 	public static final File FAVORIS=new File(USER_FOLDER,"favoris");
 	
-	public static final Version VERSION=new Version("0.7.3");
+	public static final Version VERSION=new Version("0.7.4");
 	
 	//pas de constructeur
 	private Global(){}
