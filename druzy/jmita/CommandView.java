@@ -222,7 +222,6 @@ public class CommandView extends AbstractView {
 					labelMax=new JLabel();
 					Time max=getController().getModel().getRenderer().getDuration();
 					if (max!=null) labelMax.setText(max.toString());
-					labelMax.setText("coucou");
 						
 					labelVolume=new JLabel(ImageIconUtils.resize(new ImageIcon(ClassLoader.getSystemResource(Global.VOLUME)), dim));
 					

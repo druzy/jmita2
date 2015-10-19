@@ -1,2 +1,2 @@
 #!/bin/bash
-java -classpath "/usr/share/java/*" druzy.jmita.JMita2 $*
+java -classpath "/usr/share/java/*" druzy.jmita.JMita2 "$@"

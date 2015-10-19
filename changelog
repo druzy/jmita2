@@ -1,3 +1,6 @@
+jmita version 0.7.5 :
+bug fix : problème avec les arguments à espace
+
 jmita version 0.7.4 :
 bug fix : correction du build pour ajouter les images au jar
 
