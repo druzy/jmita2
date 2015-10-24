@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Name=JMita 2
+Name=\s
 Icon=jmita2.png
 Path=/home/druzy
 Exec=/usr/bin/jmita2.sh
