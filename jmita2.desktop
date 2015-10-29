@@ -2,8 +2,8 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Name=\s
-Icon=jmita2.png
+Name=JMita 2
+Icon=jmita2
 Path=/home/druzy
 Exec=/usr/bin/jmita2.sh
 StartupNotify=false

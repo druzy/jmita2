@@ -170,10 +170,7 @@ public class SendTo extends AbstractController{
 				}
 				if (!wait.getViews().get(0).isDisplaying()){
 					wait.closeViews();
-					
 				}
-					
-				
 			}
 		}.start();
 	}

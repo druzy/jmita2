@@ -3,6 +3,7 @@ import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -48,6 +49,7 @@ public class SendToView extends AbstractView {
 	private JMenuItem addFavorite=null;
 	private JMenuItem removeFavorite=null;
 	private int dimIcon=44;
+	private Point rightClickLocation=null;
 	
 	private boolean displaying=false;
 	
@@ -80,7 +82,9 @@ public class SendToView extends AbstractView {
 						}
 
 					});
-					//mainFrame.setIconImage(new ImageIcon(ClassLoader.getSystemResource(Global.MAIN_ICON)).getImage());
+					mainFrame.setIconImage(new ImageIcon(ClassLoader.getSystemResource(Global.MAIN_ICON)).getImage());
+					
+					rightClickLocation=new Point();
 					
 					layout=new GridBagLayout();
 					
@@ -115,18 +119,24 @@ public class SendToView extends AbstractView {
 							return panel;
 						}
 					});
+					
 					renderers.addMouseListener(new MouseAdapter(){
 						@Override
-						public void mouseClicked(MouseEvent event){
+						public void mouseClicked(final MouseEvent event){
 							if (event.getButton()==MouseEvent.BUTTON3){
-								rightClick=new JPopupMenu();
+								rightClick.removeAll();
 								Renderer r=listModel.get(renderers.locationToIndex(event.getPoint()));
 								if (getController().getModel().isFavorite(r)){
 									rightClick.add(removeFavorite);
 								}else{
 									rightClick.add(addFavorite);
 								}
-								rightClick.show(renderers, event.getX(), event.getY());
+								SwingUtilities.invokeLater(new Runnable(){
+									public void run(){
+										rightClick.show(renderers, event.getX(), event.getY());
+									}
+								});
+								
 							}
 						}
 					});
@@ -155,8 +165,6 @@ public class SendToView extends AbstractView {
 									if (devices.size()>0){
 										getController().notifyAction(SendToView.this, devices.toArray(), SendToModel.PUSH_SEND_BUTTON);
 									}
-									
-									
 								}
 							}.start();
 						}
@@ -167,7 +175,13 @@ public class SendToView extends AbstractView {
 					searchBar.setMinimum(0);
 					searchBar.setMaximum(getController().getModel().getMilliSecondWait());
 					
-					rightClick=new JPopupMenu();
+					rightClick=new JPopupMenu(){
+						@Override
+						public void show(Component invoker, int x, int y){
+							rightClickLocation.setLocation(x, y);
+							super.show(invoker, x, y);
+						}
+					};
 					
 					addFavorite=new JMenuItem("Ajouter aux favoris");
 					addFavorite.addActionListener(new ActionListener(){
@@ -175,7 +189,7 @@ public class SendToView extends AbstractView {
 						public void actionPerformed(ActionEvent event){
 							new Thread(){
 								public void run(){
-									getController().notifyAction(SendToView.this, new Object[]{listModel.get(renderers.locationToIndex(rightClick.getLocation())),true} , SendToModel.CLICK_RENDERER);
+									getController().notifyAction(SendToView.this, new Object[]{listModel.get(renderers.locationToIndex(rightClickLocation.getLocation())),true} , SendToModel.CLICK_RENDERER);
 									SwingUtilities.invokeLater(new Runnable(){
 										public void run(){
 											renderers.repaint();
@@ -192,7 +206,7 @@ public class SendToView extends AbstractView {
 						public void actionPerformed(ActionEvent event){
 							new Thread(){
 								public void run(){
-									getController().notifyAction(SendToView.this, new Object[]{listModel.get(renderers.locationToIndex(rightClick.getLocation())),false} , SendToModel.CLICK_RENDERER);
+									getController().notifyAction(SendToView.this, new Object[]{listModel.get(renderers.locationToIndex(rightClickLocation.getLocation())),false} , SendToModel.CLICK_RENDERER);
 									SwingUtilities.invokeLater(new Runnable(){
 										public void run(){
 											renderers.repaint();

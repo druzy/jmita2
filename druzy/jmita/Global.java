@@ -20,7 +20,7 @@ public class Global {
 	public static final File USER_FOLDER=new File(USER_HOME,".jmita2");
 	public static final File FAVORIS=new File(USER_FOLDER,"favoris");
 	
-	public static final Version VERSION=new Version("0.7.4");
+	public static final Version VERSION=new Version("0.7.7");
 	
 	//pas de constructeur
 	private Global(){}

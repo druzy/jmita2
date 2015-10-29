@@ -12,8 +12,6 @@ import druzy.utils.TimeUtils;
 
 public class Command extends AbstractController{
 
-	private boolean firstDisplay=true;
-
  	public Command(AbstractModel model) {
 		super(model);
 		this.addView(new CommandView(this));

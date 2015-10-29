@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
@@ -33,6 +34,7 @@ import com.google.common.io.Files;
 
 import druzy.mvc.AbstractView;
 import druzy.mvc.Controller;
+import druzy.utils.ComponentUtils;
 import druzy.utils.ImageIconUtils;
 import druzy.utils.TimeUtils;
 
@@ -51,7 +53,6 @@ public class CommandView extends AbstractView {
 	private JSlider slider=null;
 	private JLabel labelMin=null;
 	private JLabel labelMax=null;
-	private Hashtable<Integer,String> slidersLabel=null;
 	private JList<File> playlist=null;
 	private DefaultListModel<File> playlistModel=null;
 	private JLabel labelVolume=null;
@@ -93,7 +94,9 @@ public class CommandView extends AbstractView {
 
 					});
 					commandFrame.setLayout(layout);
-					commandFrame.setResizable(false);
+					ComponentUtils.setMaximumSizeToMaximumWindowBounds(commandFrame);
+					ImageIcon ii=getController().getModel().getRenderer().getIcon();
+					if (ii!=null) commandFrame.setIconImage(ii.getImage());
 					
 					rewind=new JButton(ImageIconUtils.resize(new ImageIcon(ClassLoader.getSystemResource(Global.MEDIA_REWIND_OUTLINE)), dim));
 					
@@ -297,7 +300,7 @@ public class CommandView extends AbstractView {
 					c.fill=GridBagConstraints.BOTH;
 					c.weightx=1;
 					c.weighty=1;
-					commandFrame.add(playlist,c);
+					commandFrame.add(new JScrollPane(playlist),c);
 					c.gridwidth=1;
 					c.fill=GridBagConstraints.NONE;
 					c.weightx=0;
