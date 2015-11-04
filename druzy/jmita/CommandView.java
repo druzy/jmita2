@@ -418,7 +418,7 @@ public class CommandView extends AbstractView {
 						public void run(){
 							labelMin.setText(t.toString());
 							slider.getModel().setValue(TimeUtils.timeToSeconds(t));
-							commandFrame.pack();
+							//commandFrame.pack();
 						}
 					});
 				}
@@ -431,7 +431,7 @@ public class CommandView extends AbstractView {
 						public void run(){
 							labelMax.setText(t.toString());
 							slider.getModel().setMaximum(TimeUtils.timeToSeconds(t));
-							commandFrame.pack();
+							//commandFrame.pack();
 						}
 					});
 				}
