@@ -13,7 +13,6 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.sql.Time;
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
@@ -61,7 +60,7 @@ public class CommandView extends AbstractView {
 	private JButton volumeDown=null;
 	
 	private int dim=44;
-	private int littleDim=22;
+	//private int littleDim=22;
 	
 	@SuppressWarnings("serial")
 	public CommandView(Controller controller) {
@@ -406,6 +405,7 @@ public class CommandView extends AbstractView {
 							upToFront(pause,playPausePanel);
 							stop.setEnabled(true);
 							playlist.repaint();
+							commandFrame.pack();
 						}
 					});
 				}
@@ -478,6 +478,7 @@ public class CommandView extends AbstractView {
 								stop.setEnabled(false);
 								upToFront(play,playPausePanel);
 								playlist.repaint();
+								commandFrame.pack();
 							}
 						}
 					});

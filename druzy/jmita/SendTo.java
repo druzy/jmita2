@@ -1,17 +1,12 @@
 package druzy.jmita;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import druzy.littleframe.WaitDevice;
 import druzy.mvc.AbstractController;
-import druzy.mvc.AbstractModel;
-import druzy.mvc.AbstractView;
 import druzy.mvc.Model;
 import druzy.mvc.View;
-import druzy.protocol.AbstractRenderer;
 import druzy.protocol.Device;
 import druzy.protocol.Discoverer;
 import druzy.protocol.DiscovererFactory;
@@ -44,7 +39,8 @@ public class SendTo extends AbstractController{
 	public void notifyAction(View view, Object[] objects, int type) {
 		switch(type){
 		case SendToModel.PUSH_CANCEL_BUTTON :
-			exit();
+			if (getModel().getCommandNumbers()==0) exit();
+			else closeViews();
 			break;
 		
 		case SendToModel.PUSH_SEND_BUTTON :
@@ -131,7 +127,6 @@ public class SendTo extends AbstractController{
 			try {
 				threadSearch.join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -8,13 +8,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 
-import javax.swing.JFileChooser;
-
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
 import druzy.littleframe.AskFiles;
-import druzy.protocol.DiscovererFactory;
 
 public class JMita2 {
 
